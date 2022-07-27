@@ -6,3 +6,13 @@ class Renderer {
     $(".teamView-container").append(teamPlayers);
   }
 }
+
+
+
+
+
+
+
+
+
+

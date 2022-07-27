@@ -14,26 +14,27 @@
         <input class="input" type="text" placeholder="Enter Team Name" />
         <button id="get-roster">Get Roster</button>
       </div>
-      <div class="teamView-container"></div>
     </div>
 
-    <script id="teamPlayers-templete" type="text/x-Handlebars-template">
-        {{#each teamPlayersInfo}}
-        <div class="player-info">
-           <div>
-               <h2>{{firstName}} {{lastName}} </h2>
-               <h3> {{jersey}} </h3>
-           </div>
-           <div>
-            <img src="https://nba-players.herokuapp.com/players/{{lastName}}/{{firstName}}">
-           </div>
-
-           <div>
-               <h2>{{pos}}</h2>
-           </div>
+    <script id="teamPlayers-container" type="text/x-handlebars-template">
+      {{#each players}}
+        <div>
+          <div>
+            <h2>{{firstName}} {{lastName}} </h2>
+            <h3> {{jersey}} </h3>
+          </div>
+          <div>
+            <img
+              src="https://nba-players.herokuapp.com/players/{{lastName}}/{{firstName}}"
+            />
+          </div>
+          <div>
+            <h2>{{pos}}</h2>
+          </div>
         </div>
       {{/each}}
     </script>
+    <div id="teamPlayers"></div>
 
     <!-- scripts import -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>

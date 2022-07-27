@@ -21,7 +21,7 @@ app.get("/teams/:teamName", (request, response) => {
     .get("http://data.nba.net/10s/prod/v1/2018/players.json")
     .then(function (res) {
       const playersArray = res.data.league.standard;
-      const teamsArray = playersArray
+      const teamPlayers = playersArray
         .filter((p) => p.teamId === teamToIDs[teamName] && p.isActive)
         .map((player) => ({
           firstName: player.firstName,
@@ -29,7 +29,7 @@ app.get("/teams/:teamName", (request, response) => {
           jersey: player.jersey,
           pos: player.pos,
         }));
-      response.send(teamsArray);
+      response.send(teamPlayers); // send to frontend 
     });
 });
 

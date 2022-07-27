@@ -1,12 +1,15 @@
-render = new Renderer();
 
+const render = function (data) {
+  const source = $("#teamPlayers-container").html();
+  const templet = Handlebars.compile(source);
+  const someHtml = templet({ players: data });
+  $("#teamPlayers").append(someHtml);
+};
 
-const  getRoaster = function (){
-    $(".teamView-container").empty();
-    const teamName = $("input").val();
-    $.get(`/teams/${teamName}`, function (data) {
-        render.renderTeam(data);
-    })
-}
-
-$("#get-roster").on("click", getRoaster);
+$("#get-roster").on("click", function () {
+  $("#teamPlayers").empty();
+  let teamName = $("input").val();
+  $.get(`/teams/${teamName}`, function (data) {
+    render(data);
+  });
+});
