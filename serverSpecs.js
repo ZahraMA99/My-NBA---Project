@@ -20,14 +20,14 @@ app.get("/teams/:teamName", (request, response) => {
   axios
     .get("http://data.nba.net/10s/prod/v1/2018/players.json")
     .then(function (res) {
-      let playersArray = res.data.league.standard;
-      let teamsArray = playersArray
+      const playersArray = res.data.league.standard;
+      const teamsArray = playersArray
         .filter((p) => p.teamId === teamToIDs[teamName] && p.isActive)
-        .map((p) => ({
-          firstName: playersArray.firstName,
-          LastName: playersArray.lastName,
-          jersey: playersArray.jersey,
-          pos: playersArray.pos,
+        .map((player) => ({
+          firstName: player.firstName,
+          lastName: player.lastName,
+          jersey: player.jersey,
+          pos: player.pos,
         }));
       response.send(teamsArray);
     });
@@ -37,5 +37,3 @@ const port = 3000;
 app.listen(port, function () {
   console.log(`Running server on port ${port}`);
 });
-
-

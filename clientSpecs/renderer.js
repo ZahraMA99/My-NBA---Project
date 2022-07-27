@@ -1,8 +1,8 @@
 class Renderer {
-  renderTeamPlayers(data) {
-    let source = $(".teamPlayers-templete").html();
+  renderTeam(data) {
+    let source = $("#teamPlayers-templete").html();
     let template = Handlebars.compile(source);
-    let teamPlayers = template(data);
+    let teamPlayers = template({teamPlayersInfo: data});
     $(".teamView-container").append(teamPlayers);
   }
 }

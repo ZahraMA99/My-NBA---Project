@@ -4,20 +4,15 @@
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link
-      rel="stylesheet"
-      type="text/css"
-      media="screen"
-      href="clientSpecs\style.css"
-    />
+    <link rel="stylesheet" href="style.css" />
     <title>Document</title>
   </head>
   <body>
     <!--Code-->
     <div class="main-container">
       <div class="header-container">
-        <input type="text" placeholder="Enter Team Name" />
-        <button>Get Roster</button>
+        <input class="input" type="text" placeholder="Enter Team Name" />
+        <button id="get-roster">Get Roster</button>
       </div>
       <div class="teamView-container"></div>
     </div>
@@ -26,10 +21,13 @@
         {{#each teamPlayersInfo}}
         <div class="player-info">
            <div>
-               <h2>{{fistName}} {{lastName}} </h2>
+               <h2>{{firstName}} {{lastName}} </h2>
                <h3> {{jersey}} </h3>
            </div>
-           <!-- div for an image-->
+           <div>
+            <img src="https://nba-players.herokuapp.com/players/{{lastName}}/{{firstName}}">
+           </div>
+
            <div>
                <h2>{{pos}}</h2>
            </div>
@@ -38,9 +36,9 @@
     </script>
 
     <!-- scripts import -->
-    <script src="serverSpecs.js"></script>
-    <script src="clientSpecs.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/handlebars.js/3.0.1/handlebars.min.js"></script>
-    <script src="clientSpecs\main.js"></script>
+    <script src="./renderer.js"></script>
+    <script src="./main.js"></script>
   </body>
 </html>

@@ -1,8 +1,12 @@
-render = new Renderer()
-let  getRoaster = function (){
-    $(".teamView-container").empty()
-    const teamName = $("input").val()
-    $.get(`http://localhost:3000/teams/${teamName}`, function (data) {
-        render.renderTeam(data)
+render = new Renderer();
+
+
+const  getRoaster = function (){
+    $(".teamView-container").empty();
+    const teamName = $("input").val();
+    $.get(`/teams/${teamName}`, function (data) {
+        render.renderTeam(data);
     })
 }
+
+$("#get-roster").on("click", getRoaster);
